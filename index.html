@@ -11,6 +11,15 @@
 <body>
     <header>
         <h1>BASIC QUIZ GAME</h1>
+        <p id="total-score">Total Score: <span id="score">0</span>/6</p>
+        <div id="timer">
+            <p>Time Left: <span id="time-left">60</span> seconds</p>
+        </div>
+        <div id="score-history">
+            <button id="history">View History</button>
+            <button id="reset-history">Reset History</button>
+            <button id="retake">RETAKE</button>
+        </div>
     </header>
     <main>
         <div class="container">
@@ -38,8 +47,10 @@
                         </li>
                     </ol>
                 </div>
-                <button id="submit-button">Submit</button>
-
+                <div class="q-1-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
             </div>
 
             <div class="q-2">
@@ -65,8 +76,10 @@
                         </li>
                     </ol>
                 </div>
-                <button id="submit-button">Submit</button>
-
+                <div class="q-2-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
             </div>
 
             <div class="q-3">
@@ -92,8 +105,10 @@
                         </li>
                     </ol>
                 </div>
-                <button id="submit-button">Submit</button>
-
+                <div class="q-3-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
             </div>
 
             <div class="q-4">
@@ -119,8 +134,10 @@
                         </li>
                     </ol>
                 </div>
-                <button id="submit-button">Submit</button>
-
+                <div class="q-4-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
             </div>
 
             <div class="q-5">
@@ -146,8 +163,10 @@
                         </li>
                     </ol>
                 </div>
-                <button id="submit-button">Submit</button>
-
+                <div class="q-5-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
             </div>
 
             <div class="q-6">
@@ -173,11 +192,18 @@
                         </li>
                     </ol>
                 </div>
-                <button id="submit-button">Submit</button>
+                <div class="q-6-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                    <button id="get-score">Get Score</button>
+                    
+                    
+                    
+
+                    
+                </div>
 
             </div>
-            
-            
         </div>
     </main>
     <script src="script.js"></script>    
