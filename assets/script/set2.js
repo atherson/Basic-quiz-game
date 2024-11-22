@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startTimer(); // Start the timer as soon as the page loads
 });
 
-// Handle Submit Button Click
 function handleSubmit(questionClass) {
     const selectedAnswer = document.querySelector(
         `.${questionClass} input[type='radio']:checked`
@@ -97,23 +96,40 @@ function handleSubmit(questionClass) {
     }
 
     scoreDisplay.textContent = score;
-    // Disable all inputs for this question
-    document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => {
-        input.disabled = true;
-    });
-
-    // Disable the submit button for this question
+    document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => input.disabled = true);
     document.querySelector(`.${questionClass} #submit-button`).disabled = true;
+
+    // Auto-save score to localStorage after each submission
+    const timestamp = new Date().toLocaleString();
+    scoreHistory.push({ score, time: timestamp });
+    localStorage.setItem("scoreHistory", JSON.stringify(scoreHistory));
+
+    // Save the total score in localStorage for use in the second website
+    localStorage.setItem("quiz1Score", score);
+    alert(`Your score of ${score} has been saved.`);
 }
 
-// Handle Reset Button Click for individual questions
+
+// Handle reset button click
 function handleReset(questionClass) {
-    document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => {
+    document.querySelectorAll("input[type='radio']").forEach(input => {
+        input.checked = false;
+        input.disabled = false;
+    });
+    document.querySelectorAll("button").forEach(button => button.disabled = false);
+}
+// Handle retake functionality
+function handleRetake() {
+    score = 0;
+    scoreDisplay.textContent = score;
+
+    document.querySelectorAll("input[type='radio']").forEach(input => {
         input.checked = false;
         input.disabled = false;
     });
 
-    document.querySelector(`.${questionClass} #submit-button`).disabled = false;
+    submitButtons.forEach(button => button.disabled = false);
+    alert("Quiz reset. You can retake it now!");
 }
 
 // Handle Retake Functionality

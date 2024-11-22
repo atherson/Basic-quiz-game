@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     startTimer();
 });
-
 // Save score history and update localStorage
 function storeScore() {
     const timestamp = new Date().toLocaleString();
@@ -68,7 +67,6 @@ function storeScore() {
     alert(`Your score of ${score} has been saved.`);
 }
 
-// Handle submit button click
 function handleSubmit(questionClass) {
     const selectedAnswer = document.querySelector(
         `.${questionClass} input[type='radio']:checked`
@@ -87,17 +85,26 @@ function handleSubmit(questionClass) {
     scoreDisplay.textContent = score;
     document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => input.disabled = true);
     document.querySelector(`.${questionClass} #submit-button`).disabled = true;
+
+    // Auto-save score to localStorage after each submission
+    const timestamp = new Date().toLocaleString();
+    scoreHistory.push({ score, time: timestamp });
+    localStorage.setItem("scoreHistory", JSON.stringify(scoreHistory));
+
+    // Save the total score in localStorage for use in the second website
+    localStorage.setItem("quiz1Score", score);
+    alert(`Your score of ${score} has been saved.`);
 }
+
 
 // Handle reset button click
 function handleReset(questionClass) {
-    document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => {
+    document.querySelectorAll("input[type='radio']").forEach(input => {
         input.checked = false;
         input.disabled = false;
     });
-    document.querySelector(`.${questionClass} #submit-button`).disabled = false;
+    document.querySelectorAll("button").forEach(button => button.disabled = false);
 }
-
 // Handle retake functionality
 function handleRetake() {
     score = 0;
