@@ -10,7 +10,7 @@ body{
 .q-1, .q-2, .q-3, .q-4, .q-5, .q-6{
     background-color: rgb(0, 0, 0);
     color:white;
-    height: 220px;
+    height: auto;
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
@@ -87,7 +87,7 @@ pre {
     width:auto;
     column-gap: 10px;
 }
-#history, #reset-history, #retake{
+#history, #reset-history, #retake,#next-set-2{
     background-color: rgb(34, 3, 70);
     color: white;
     border: none;
@@ -96,4 +96,6 @@ pre {
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
+    height: 50px;
+    margin-bottom: 10px;
 }

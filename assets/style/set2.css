@@ -1,0 +1,101 @@
+header{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+body{
+    background-color: rgb(37, 37, 41);
+}
+.q-1, .q-2, .q-3, .q-4, .q-5, .q-6{
+    background-color: rgb(0, 0, 0);
+    color:white;
+    height: auto;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.q-6-header, .q-5-header, .q-4-header, .q-3-header, .q-2-header, .q-1-header{
+    margin: 20px 0;
+}
+ol {
+    list-style-type: lower-alpha;
+    padding-left: 20px;
+}
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+pre {
+    margin: 0; 
+    font-family: inherit; 
+}
+#submit-button{
+    display: block;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#get-score{
+    display: block;
+    background-color: rgb(4, 15, 134);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#q1-a, #q1-b, #q1-c, #q1-d, #q2-a, #q2-b, #q2-c, #q2-d, #q3-a, #q3-b, #q3-c, #q3-d, #q4-a, #q4-b, #q4-c, #q4-d, #q5-a, #q5-b, #q5-c, #q5-d, #q6-a, #q6-b, #q6-c, #q6-d :hover{
+    cursor: pointer;
+}
+#reset-button {
+    display: block;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.q-6-footer, .q-5-footer, .q-4-footer, .q-3-footer, .q-2-footer, .q-1-footer{
+    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    column-gap: 10px;
+}
+#score-history{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    height:30px;
+    width:auto;
+    column-gap: 10px;
+}
+#history, #reset-history, #retake,#next-set-2{
+    background-color: rgb(34, 3, 70);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    height: 50px;
+    margin-bottom: 10px;
+}

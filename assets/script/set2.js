@@ -1,17 +1,17 @@
 // Question answers for scoring
 const answers = {
     "q1-answer": "q1-b",
-    "q2-answer": "q2-a",
+    "q2-answer": "q2-b",
     "q3-answer": "q3-b",
-    "q4-answer": "q4-b",
+    "q4-answer": "q4-c",
     "q5-answer": "q5-a",
     "q6-answer": "q6-b"
 };
 
 // Variables
 let score = 0;
-let timeLeft = 60;
 let timer;
+let timeLeft = 3600; // Total time in seconds (e.g., 1 hour)
 let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || []; // Load history from localStorage
 
 // DOM elements
@@ -25,45 +25,60 @@ const historyButton = document.getElementById("history");
 const resetHistoryButton = document.getElementById("reset-history"); // Reset history button
 
 // Timer Functionality
-function startTimer() {
-    const initialTime = timeLeft;
+document.addEventListener('DOMContentLoaded', () => {
+    const timeLeftDisplay = document.getElementById("time-left");
 
-    // Clear existing interval (if any) to ensure only one timer runs at a time
-    if (timer) {
-        clearInterval(timer);
+    // Function to format seconds into hours, minutes, and seconds
+    function formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600); // Get the hours
+        const minutes = Math.floor((seconds % 3600) / 60); // Get the minutes
+        const remainingSeconds = seconds % 60; // Get the remaining seconds
+
+        // Return the time formatted as HH:MM:SS
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     }
 
-    timer = setInterval(() => {
-        timeLeft--;
-        timeLeftDisplay.textContent = timeLeft;
-
-        // Update timer color
-        const timeUsed = initialTime - timeLeft;
-        if (timeUsed >= initialTime * 0.75) {
-            timeLeftDisplay.style.color = "red";
-        } else if (timeUsed >= initialTime * 0.5) {
-            timeLeftDisplay.style.color = "orange";
-        } else if (timeUsed >= initialTime * 0.25) {
-            timeLeftDisplay.style.color = "yellow";
-        } else {
-            timeLeftDisplay.style.color = "green"; // Reset to default
+    // Start the timer
+    function startTimer() {
+        if (timer) {
+            clearInterval(timer); // Clear any existing timer
         }
 
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            alert("Time's up! Quiz over.");
-            disableInputs();
-        }
-    }, 1000);
-}
+        timer = setInterval(() => {
+            timeLeft--;
+            timeLeftDisplay.textContent = formatTime(timeLeft);
 
-// Disable all inputs when time is up or quiz ends
-function disableInputs() {
-    document.querySelectorAll("input[type='radio']").forEach(input => {
-        input.disabled = true;
-    });
-    submitButtons.forEach(button => button.disabled = true);
-}
+            // Change the color based on how much time is left
+            const timeUsed = 3600 - timeLeft;
+            if (timeUsed >= 2700) { // 75% of the time
+                timeLeftDisplay.style.color = "red";
+            } else if (timeUsed >= 1800) { // 50% of the time
+                timeLeftDisplay.style.color = "orange";
+            } else if (timeUsed >= 900) { // 25% of the time
+                timeLeftDisplay.style.color = "yellow";
+            } else {
+                timeLeftDisplay.style.color = "green";
+            }
+
+            // Stop the timer when it reaches 0
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                alert("Time's up! Quiz over.");
+                disableInputs();
+            }
+        }, 1000);
+    }
+
+    // Function to disable inputs when the timer is done
+    function disableInputs() {
+        document.querySelectorAll("input[type='radio']").forEach(input => {
+            input.disabled = true;
+        });
+        document.querySelectorAll("button").forEach(button => button.disabled = true);
+    }
+
+    startTimer(); // Start the timer as soon as the page loads
+});
 
 // Handle Submit Button Click
 function handleSubmit(questionClass) {
@@ -108,8 +123,8 @@ function handleRetake() {
     scoreDisplay.textContent = score;
 
     // Reset timer
-    timeLeft = 60;
-    timeLeftDisplay.textContent = timeLeft;
+    timeLeft = 3600; // Reset time to 1 hour (3600 seconds)
+    timeLeftDisplay.textContent = formatTime(timeLeft);
     timeLeftDisplay.style.color = ""; // Reset timer color
     clearInterval(timer);
     startTimer();
