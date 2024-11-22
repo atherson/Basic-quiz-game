@@ -24,43 +24,27 @@ const retakeButton = document.getElementById("retake");
 const historyButton = document.getElementById("history");
 const resetHistoryButton = document.getElementById("reset-history"); // Reset history button
 
-// Timer Functionality
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    let timeLeft = localStorage.getItem("timeLeft") ? parseInt(localStorage.getItem("timeLeft")) : 3600; // Get saved time from localStorage or start from 3600 seconds (1 hour)
+
     const timeLeftDisplay = document.getElementById("time-left");
 
-    // Function to format seconds into hours, minutes, and seconds
     function formatTime(seconds) {
-        const hours = Math.floor(seconds / 3600); // Get the hours
-        const minutes = Math.floor((seconds % 3600) / 60); // Get the minutes
-        const remainingSeconds = seconds % 60; // Get the remaining seconds
-
-        // Return the time formatted as HH:MM:SS
-        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+        return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
     }
 
-    // Start the timer
     function startTimer() {
-        if (timer) {
-            clearInterval(timer); // Clear any existing timer
-        }
-
+        if (timer) clearInterval(timer);
         timer = setInterval(() => {
             timeLeft--;
             timeLeftDisplay.textContent = formatTime(timeLeft);
 
-            // Change the color based on how much time is left
-            const timeUsed = 3600 - timeLeft;
-            if (timeUsed >= 2700) { // 75% of the time
-                timeLeftDisplay.style.color = "red";
-            } else if (timeUsed >= 1800) { // 50% of the time
-                timeLeftDisplay.style.color = "orange";
-            } else if (timeUsed >= 900) { // 25% of the time
-                timeLeftDisplay.style.color = "yellow";
-            } else {
-                timeLeftDisplay.style.color = "green";
-            }
+            // Save the remaining time to localStorage on every tick
+            localStorage.setItem("timeLeft", timeLeft);
 
-            // Stop the timer when it reaches 0
             if (timeLeft <= 0) {
                 clearInterval(timer);
                 alert("Time's up! Quiz over.");
@@ -69,16 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // Function to disable inputs when the timer is done
     function disableInputs() {
-        document.querySelectorAll("input[type='radio']").forEach(input => {
-            input.disabled = true;
-        });
+        document.querySelectorAll("input[type='radio']").forEach(input => input.disabled = true);
         document.querySelectorAll("button").forEach(button => button.disabled = true);
     }
 
-    startTimer(); // Start the timer as soon as the page loads
+    startTimer();
 });
+
 
 function handleSubmit(questionClass) {
     const selectedAnswer = document.querySelector(

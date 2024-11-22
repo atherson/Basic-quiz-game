@@ -25,7 +25,8 @@ const retakeButton = document.getElementById("retake");
 
 // Timer functionality
 document.addEventListener("DOMContentLoaded", () => {
-    let timeLeft = 3600; // 1 hour in seconds
+    let timeLeft = localStorage.getItem("timeLeft") ? parseInt(localStorage.getItem("timeLeft")) : 3600; // Get saved time from localStorage or start from 3600 seconds (1 hour)
+
     const timeLeftDisplay = document.getElementById("time-left");
 
     function formatTime(seconds) {
@@ -40,6 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
         timer = setInterval(() => {
             timeLeft--;
             timeLeftDisplay.textContent = formatTime(timeLeft);
+
+            // Save the remaining time to localStorage on every tick
+            localStorage.setItem("timeLeft", timeLeft);
 
             if (timeLeft <= 0) {
                 clearInterval(timer);
@@ -56,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     startTimer();
 });
+
 // Save score history and update localStorage
 function storeScore() {
     const timestamp = new Date().toLocaleString();
