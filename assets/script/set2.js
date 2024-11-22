@@ -10,8 +10,8 @@ const answers = {
 
 // Variables
 let score = 0;
+let timeLeft = parseInt(localStorage.getItem("timeLeft")) || 3600;  // Retrieve from localStorage or default to 3600 seconds
 let timer;
-let timeLeft = 3600; // Total time in seconds (e.g., 1 hour)
 let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || []; // Load history from localStorage
 
 // DOM elements
@@ -24,44 +24,57 @@ const retakeButton = document.getElementById("retake");
 const historyButton = document.getElementById("history");
 const resetHistoryButton = document.getElementById("reset-history"); // Reset history button
 
-document.addEventListener("DOMContentLoaded", () => {
-    let timeLeft = localStorage.getItem("timeLeft") ? parseInt(localStorage.getItem("timeLeft")) : 3600; // Get saved time from localStorage or start from 3600 seconds (1 hour)
+function startTimer() {
+    const initialTime = timeLeft;  // initialTime is in seconds
 
-    const timeLeftDisplay = document.getElementById("time-left");
-
-    function formatTime(seconds) {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const remainingSeconds = seconds % 60;
-        return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+    // Clear existing interval (if any) to ensure only one timer runs at a time
+    if (timer) {
+        clearInterval(timer);
     }
 
-    function startTimer() {
-        if (timer) clearInterval(timer);
-        timer = setInterval(() => {
-            timeLeft--;
-            timeLeftDisplay.textContent = formatTime(timeLeft);
+    timer = setInterval(() => {
+        timeLeft--;
+        localStorage.setItem("timeLeft", timeLeft); // Store the updated timeLeft in localStorage
+        
+        // Calculate hours, minutes, and seconds
+        let hours = Math.floor(timeLeft / 3600);
+        let minutes = Math.floor((timeLeft % 3600) / 60);
+        let seconds = timeLeft % 60;
 
-            // Save the remaining time to localStorage on every tick
-            localStorage.setItem("timeLeft", timeLeft);
+        // Format the time in HH:MM:SS format
+        const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        timeLeftDisplay.textContent = formattedTime;
 
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                alert("Time's up! Quiz over.");
-                disableInputs();
-            }
-        }, 1000);
-    }
+        // Update timer color
+        const timeUsed = initialTime - timeLeft;
+        if (timeUsed >= initialTime * 0.75) {
+            timeLeftDisplay.style.color = "red";
+        } else if (timeUsed >= initialTime * 0.5) {
+            timeLeftDisplay.style.color = "orange";
+        } else if (timeUsed >= initialTime * 0.25) {
+            timeLeftDisplay.style.color = "yellow";
+        } else {
+            timeLeftDisplay.style.color = "green"; // Reset to default
+        }
 
-    function disableInputs() {
-        document.querySelectorAll("input[type='radio']").forEach(input => input.disabled = true);
-        document.querySelectorAll("button").forEach(button => button.disabled = true);
-    }
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            alert("Time's up! Quiz over.");
+            disableInputs();
+        }
+    }, 1000);
+}
 
-    startTimer();
-});
+// Disable all inputs when time is up or quiz ends
+function disableInputs() {
+    document.querySelectorAll("input[type='radio']").forEach(input => {
+        input.disabled = true;
+    });
+    submitButtons.forEach(button => button.disabled = true);
+}
 
-
+// Handle Submit Button Click
 function handleSubmit(questionClass) {
     const selectedAnswer = document.querySelector(
         `.${questionClass} input[type='radio']:checked`
@@ -78,40 +91,23 @@ function handleSubmit(questionClass) {
     }
 
     scoreDisplay.textContent = score;
-    document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => input.disabled = true);
+    // Disable all inputs for this question
+    document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => {
+        input.disabled = true;
+    });
+
+    // Disable the submit button for this question
     document.querySelector(`.${questionClass} #submit-button`).disabled = true;
-
-    // Auto-save score to localStorage after each submission
-    const timestamp = new Date().toLocaleString();
-    scoreHistory.push({ score, time: timestamp });
-    localStorage.setItem("scoreHistory", JSON.stringify(scoreHistory));
-
-    // Save the total score in localStorage for use in the second website
-    localStorage.setItem("quiz1Score", score);
-    alert(`Your score of ${score} has been saved.`);
 }
 
-
-// Handle reset button click
+// Handle Reset Button Click for individual questions
 function handleReset(questionClass) {
-    document.querySelectorAll("input[type='radio']").forEach(input => {
-        input.checked = false;
-        input.disabled = false;
-    });
-    document.querySelectorAll("button").forEach(button => button.disabled = false);
-}
-// Handle retake functionality
-function handleRetake() {
-    score = 0;
-    scoreDisplay.textContent = score;
-
-    document.querySelectorAll("input[type='radio']").forEach(input => {
+    document.querySelectorAll(`.${questionClass} input[type='radio']`).forEach(input => {
         input.checked = false;
         input.disabled = false;
     });
 
-    submitButtons.forEach(button => button.disabled = false);
-    alert("Quiz reset. You can retake it now!");
+    document.querySelector(`.${questionClass} #submit-button`).disabled = false;
 }
 
 // Handle Retake Functionality
@@ -121,8 +117,9 @@ function handleRetake() {
     scoreDisplay.textContent = score;
 
     // Reset timer
-    timeLeft = 3600; // Reset time to 1 hour (3600 seconds)
-    timeLeftDisplay.textContent = formatTime(timeLeft);
+    timeLeft = 60; // Reset to 60 seconds for retake
+    localStorage.setItem("timeLeft", timeLeft);  // Store the new time in localStorage
+    timeLeftDisplay.textContent = timeLeft;
     timeLeftDisplay.style.color = ""; // Reset timer color
     clearInterval(timer);
     startTimer();

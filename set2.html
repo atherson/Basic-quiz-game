@@ -13,13 +13,12 @@
         <h1>BASIC QUIZ GAME <em style="color:yellowgreen">SET 2</em></h1>
         <p id="total-score">Total Score: <span id="score">0</span>/6</p>
         <div id="timer">
-            <p>Time Left: <span id="time-left">01:00:00</span></p>
+            <p>Time Left: <span id="time-left">00:00:00</span></p>
         </div>
         <div id="score-history">
             <button id="history">View History</button>
             <button id="reset-history">Reset History</button>
             <button id="retake" onclick="alert('Are you sure you want to retake the quiz? ');alert('You will start from the beginning!!'); window.location.href = 'index.html';">RETAKE</button>
-            <button id="next-set-2" onclick="window.location.href = 'index.html';">START AGAIN</button>
         </div>
     </header>
     <main>
@@ -48,6 +47,10 @@
                         </li>
                     </ol>
                 </div>
+                <div class="q-1-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
 
             </div>
 
@@ -74,6 +77,10 @@
                         </li>
                     </ol>
                 </div>
+                <div class="q-2-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
             </div>
 
             <div class="q-3">
@@ -98,6 +105,10 @@
                             <label for="q3-d" id="q3-d-label">To create the page structure</label>
                         </li>
                     </ol>
+                </div>
+                <div class="q-3-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
                 </div>
             </div>
 
@@ -124,6 +135,10 @@
                         </li>
                     </ol>
                 </div>
+                <div class="q-4-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
             </div>
 
             <div class="q-5">
@@ -148,6 +163,10 @@
                             <label for="q5-d" id="q5-d-label"><code>&lt;# This is a comment&gt;</code></label>
                         </li>
                     </ol>
+                </div>
+                <div class="q-5-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
                 </div>
             </div>
 
