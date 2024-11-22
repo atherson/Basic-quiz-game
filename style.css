@@ -4,10 +4,47 @@ header{
     text-align: center;
     padding: 10px;
 }
-body{
-    background-color: blue;
+
+.q-1, .q-2, .q-3, .q-4, .q-5, .q-6{
+    background-color: rgb(0, 0, 0);
+    color:white;
+    height: 220px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+
+
 
 }
-main{
-    background-color: rgb(0, 0, 0);
+.q-6-header, .q-5-header, .q-4-header, .q-3-header, .q-2-header, .q-1-header{
+    margin: 20px 0;
+}
+ol {
+    list-style-type: lower-alpha;
+    padding-left: 20px;
+}
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+pre {
+    margin: 0; 
+    font-family: inherit; 
+}
+#submit-button {
+    display: block;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
