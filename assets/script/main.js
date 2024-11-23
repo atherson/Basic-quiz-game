@@ -11,7 +11,7 @@ const answers = {
 
 // Variables
 let score = 0;
-let timeLeft = parseInt(localStorage.getItem("timeLeft")) || 3600;  // Retrieve from localStorage or default to 3600 seconds
+let timeLeft = 3600;  // Retrieve from localStorage or default to 3600 seconds
 let timer;
 let scoreHistory = JSON.parse(localStorage.getItem("scoreHistory")) || []; // Load history from localStorage
 
