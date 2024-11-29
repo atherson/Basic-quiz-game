@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <title>EVOKE FASHION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/icon/icon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/men.css">
+</head>
+<body>
+    <header>
+        <div class="logo" href="index.html">
+            <a href="index.html"><h1>EVOKE FASHION</h1></a>
+        </div>
+        <div class="pc-menu">
+            <nav>
+                <ul>
+                    <li><input type="text" placeholder="Search" id="search-bar"></li>
+                    <li><a class="pc-active" href="women.htm">Women</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header> 
+    <div class="shopping-cart-container">
+       
+        <button id="cart-button">Cart (<span id="item-count">0</span>)</button>
+        
+        <aside id="cart-panel" class="cart-panel">
+          <button id="back-button" class="back-button">← BACK</button>
+          <h3>Your Shopping Cart</h3>
+          <ul id="cart-items"></ul>
+          <div id="total-price">Total: KSh 0</div>
+          <button id="clear-cart" class="clear-cart-button">CLEAR CART</button>
+        </aside>
+      </div>
+      
+
+    <main>
+        <h1>BLACK FRIDAY</h1>
+        <div class="product-grid" id="product-grid">
+
+                <div class="product-card" data-name="Bag">
+                    <img src="images/men/bag/bag.png" alt="bag" class="product-image">
+                    <div class="product-info">
+                        <h4>Bag</h4>
+                        <p>KSh 1000</p>
+                        <p class="discount">KSh 1500</p>
+                </div>
+                    <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="Bag">
+                    <img src="images/men/bag/bag2.png" alt="bag" class="product-image">
+                <div class="product-info">
+                        <h4>Leather Bag</h4>
+                        <p>KSh 1500</p>
+                        <p class="discount">KSh 2500</p>
+                </div>
+                    <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                 <div class="product-card" data-name="bandana">
+                    <img src="images/men/bandana/bandana.png" alt="bandana" class="product-image">
+                <div class="product-info">
+                        <h4>Bandana</h4>
+                        <p>KSh 600</p>
+                        <p class="discount">KSh 700</p>
+                </div>
+                    <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="belt">
+                    <img src="images/men/belt/belt.png" alt="belt" class="product-image">
+                <div class="product-info">
+                        <h4>Brown Leather Belt</h4>
+                        <p>700</p>
+                        <p class="discount">KSh 1000</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+    
+                <div class="product-card" data-name="belt">
+                    <img src="images/men/belt/belt1.png" alt="belt" class="product-image">
+                <div class="product-info">
+                        <h4>Leather Belt</h4>
+                        <p>KSh 700</p>
+                        <p class="discount">KSh 1000</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+    
+                <div class="product-card" data-name="jacket">
+                     <img src="images/men/jacket/jacket.png" alt="jacket" class="product-image">
+                <div class="product-info">
+                        <h4>Black Jacket</h4>
+                        <p>KSh 1800</p>
+                        <p class="discount">KSh 2900</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="jacket">
+                    <img src="images/men/jacket/jacket1.png" alt="jacket" class="product-image">
+                <div class="product-info">
+                        <h4>Blue Jacket</h4>
+                        <p>KSh 1800</p>
+                        <p class="discount">KSh 2900</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+        
+                <div class="product-card" data-name="jacket">
+                    <img src="images/men/jacket/jacket2.png" alt="jacket" class="product-image">
+                <div class="product-info">
+                        <h4>Brown Jacket</h4>
+                        <p>KSh 1800</p>
+                        <p class="discount">KSh 2900</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+        
+                <div class="product-card" data-name="jacket">
+                    <img src="images/men/jacket/jacket3.png" alt="jacket" class="product-image">
+                <div class="product-info">
+                        <h4>Jacket</h4>
+                        <p>KSh 1800</p>
+                        <p class="discount">KSh 2900</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="sweatshirt">
+                    <img src="images/men/sweatshirt/sweatshirt.png" alt="sweatshirt" class="product-image">
+                 <div class="product-info">
+                        <h4>Olive Green Sweatshirt</h4>
+                        <p>KSh 1300</p>
+                        <p class="discount">KSh 1800</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+            
+                <div class="product-card" data-name="sweatshirt">
+                    <img src="images/men/sweatshirt/sweatshirt1.png" alt="sweatshirt" class="product-image">
+                <div class="product-info">
+                        <h4>Sky Blue Sweatshirt</h4>
+                        <p>KSh 1300</p>
+                        <p class="discount">KSh1800</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+            
+                <div class="product-card" data-name="sweatshirt">
+                    <img src="images/men/sweatshirt/sweatshirt2.png" alt="sweatshirt" class="product-image">
+                <div class="product-info">
+                        <h4>Navy Blue Sweatshirt</h4>
+                        <p>KSh 1300</p>
+                        <p class="discount">KSh 1800</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="sweatshirt">
+                    <img src="images/men/sweatshirt/sweatshirt3.png" alt="sweatshirt" class="product-image">
+                <div class="product-info">
+                        <h4>Cream Sweatshirt</h4>
+                        <p>KSh 1300</p>
+                        <p class="discount">KSh 1800</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                
+                <div class="product-card" data-name="sweatshirt">
+                    <img src="images/men/sweatshirt/sweatshirt4.png" alt="sweatshirt" class="product-image">
+                <div class="product-info">
+                        <h4>White Sweatshirt</h4>
+                        <p>KSh 1300</p>
+                        <p class="discount">KSh 1800</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                
+
+                <div class="product-card" data-name="trouser">
+                    <img src="images/men/trouser/trouser.png" alt="trouser" class="product-image">
+                <div class="product-info">
+                        <h4>Blue Jeans</h4>
+                        <p>KSh 1100</p>
+                        <p class="discount">KSh 1500</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                    
+                <div class="product-card" data-name="trouser">
+                    <img src="images/men/trouser/trouser1.png" alt="trouser" class="product-image">
+                <div class="product-info">
+                        <h4>Black Trouser</h4>
+                        <p>KSh 1100</p>
+                        <p class="discount">KSh 1500</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                    
+                <div class="product-card" data-name="trouser">
+                    <img src="images/men/trouser/trouser2.png" alt="trouser" class="product-image">
+                <div class="product-info">
+                        <h4>Blue Jeans</h4>
+                        <p>KSh 1100</p>
+                        <p class="discount">KSh 1500</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="trouser">
+                    <img src="images/men/trouser/trouser3.png" alt="trouser" class="product-image">
+                <div class="product-info">
+                        <h4>Blue Jeans</h4>
+                        <p>KSh 1100</p>
+                        <p class="discount">KSh 1500</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                        
+                <div class="product-card" data-name="trouser">
+                    <img src="images/men/trouser/trouser4.png" alt="trouser" class="product-image">
+                <div class="product-info">
+                        <h4>Blue Jeans</h4>
+                        <p>KSh 1100</p>
+                        <p class="discount">KSh 1500</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                        
+                <div class="product-card" data-name="truckerjacket">
+                    <img src="images/men/truckerjacket/truckerjacket.png" alt="truckerjacket" class="product-image">
+                <div class="product-info">
+                        <h4>Blue Truckerjacket</h4>
+                        <p>KSh 1200</p>
+                        <p class="discount">KSh 1800</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="tshirt">
+                    <img src="images/men/tshirt/tshirt.png" alt="tshirt" class="product-image">
+                <div class="product-info">
+                        <h4>White T-Shirt</h4>
+                        <p>KSh 1000</p>
+                        <p class="discount">KSh 1200</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                            
+                <div class="product-card" data-name="tshirt">
+                    <img src="images/men/tshirt/tshirt1.png" alt="tshirt" class="product-image">
+                <div class="product-info">
+                        <h4>White T-Shirt</h4>
+                        <p>KSh 1000</p>
+                        <p class="discount">KSh 1200</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                            
+                <div class="product-card" data-name="tshirt">
+                    <img src="images/men/tshirt/tshirt2.png" alt="tshirt" class="product-image">
+                <div class="product-info">
+                        <h4>Black-Brown T-Shirt</h4>
+                        <p>KSh 1000</p>
+                        <p class="discount">KSh 1200</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+
+                <div class="product-card" data-name="tshirt">
+                    <img src="images/men/tshirt/tshirt3.png" alt="tshirt" class="product-image">
+                <div class="product-info">
+                        <h4>White T-Shirt</h4>
+                        <p>KSh 1000</p>
+                        <p class="discount">KSh 1200</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+                                
+                <div class="product-card" data-name="tshirt">
+                    <img src="images/men/tshirt/tshirt4.png" alt="tshirt" class="product-image">
+                <div class="product-info">
+                        <h4>Black T-Shirt</h4>
+                        <p>KSh 1000</p>
+                        <p class="discount">KSh 1200</p>
+                </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Evoke Fashion Website. All rights reserved.</p>
+        <p>Follow us on social media: 
+            <a href="https://www.facebook.com">Facebook</a> |
+            <a href="https://www.twitter.com">X</a> |
+            <a href="https://www.instagram.com">Instagram</a>
+        </p>
+    </footer>
+    <script src="scripts/men.js"></script>
+</body>
+</html>
