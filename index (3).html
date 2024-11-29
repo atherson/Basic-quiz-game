@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Quiz Game</title>
+    <link rel="stylesheet" href="assets/style/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="assets/icon/icon.ico">
+</head>
+<body>
+    <header>
+        <h1>BASIC QUIZ GAME </h1>
+        <p id="total-score">Total Score: <span id="score">0</span>/6</p>
+        <div id="timer">
+            <p>Time Left: <span id="time-left">00:00:00</span></p>
+        </div>
+        <div id="score-history">
+            <button id="history">View History</button>
+            <button id="reset-history">Reset History</button>
+            <button id="retake" onclick="alert('Are you sure you want to retake the quiz?'); window.location.href = 'index.html';">RETAKE</button>
+            <button id="next-set-2" onclick="window.location.href = 'set2.html';" onclick="saveScore()">QUIZ2</button>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+
+        <div class="q-1">
+                <div class="q-1-header">
+                    <h2 id="q1">1. Which of the following is used to style a webpage?</h2>
+                    <ol style="list-style-type: lower-alpha;">
+                        <li>
+                            <input type="radio" name="q1-answer" id="q1-a" class="q1-answer">
+                            <label for="q1-a" id="q1-a-label">HTML</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1-answer" id="q6-b" class="q1-answer">
+                            <label for="q1-b" id="q1-b-label"> CSS</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1-answer" id="q1-c" class="q1-answer">
+                            <label for="q1-c" id="q1-c-label">JavaScript</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q1-answer" id="q1-d" class="q1-answer">
+                            <label for="q1-d" id="q1-d-label">Python</label>
+                        </li>
+                    </ol>
+                </div>
+                <div class="q-1-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
+            </div>
+
+            <div class="q-2">
+
+                <div class="q-2-header">
+                    <h2 id="q2">2. What does HTML stand for?</h2>
+                    <ol style="list-style-type: lower-alpha;">
+                        <li>
+                            <input type="radio" name="q2-answer" id="q2-a" class="q2-answer">
+                            <label for="q2-a" id="q2-a-label">HyperText Markup Language</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2-answer" id="q2-b" class="q2-answer">
+                            <label for="q2-b" id="q2-b-label">HyperText Machine Language</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2-answer" id="q2-c" class="q2-answer">
+                            <label for="q2-c" id="q2-c-label">Home Tool Markup Language</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q2-answer" id="q2-d" class="q2-answer">
+                            <label for="q2-d" id="q2-d-label">Hyperlink Text Markup Language</label>
+                        </li>
+                    </ol>
+                </div>
+                <div class="q-2-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
+            </div>
+
+            <div class="q-3">
+
+                <div class="q-3-header">
+                    <h2 id="q3">3. Which of these is used to add interactivity to a webpage?</h2>
+                    <ol style="list-style-type: lower-alpha;">
+                        <li>
+                            <input type="radio" name="q3-answer" id="q6-a" class="q3-answer">
+                            <label for="q3-a" id="q3-a-label">HTML</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3-answer" id="q3-b" class="q3-answer">
+                            <label for="q3-b" id="q3-b-label">JavaScript</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3-answer" id="q3-c" class="q3-answer">
+                            <label for="q3-c" id="q3-c-label">Buttons</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q3-answer" id="q3-d" class="q3-answer">
+                            <label for="q3-d" id="q3-d-label">CSS</label>
+                        </li>
+                    </ol>
+                </div>
+                <div class="q-3-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
+            </div>
+
+            <div class="q-4">
+
+                <div class="q-4-header">
+                    <h2 id="q4">4. Which HTML tag is used to create a hyperlink?</h2>
+                    <ol style="list-style-type: lower-alpha;">
+                        <li>
+                            <input type="radio" name="q4-answer" id="q4-a" class="q4-answer">
+                            <label for="q4-a" id="q4-a-label"><pre><code>&lt;link&gt;</code></pre></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4-answer" id="q4-b" class="q4-answer">
+                            <label for="q4-b" id="q4-b-label"><pre><code>&lt;a&gt;</code></pre></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4-answer" id="q4-c" class="q4-answer">
+                            <label for="q4-c" id="q4-c-label"><pre><code>&lt;href&gt;</code></pre></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q4-answer" id="q4-d" class="q4-answer">
+                            <label for="q4-d" id="q4-d-label"><pre><code>&lt;url&gt;</code></pre></label>
+                        </li>
+                    </ol>
+                </div>
+                <div class="q-4-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
+            </div>
+
+            <div class="q-5">
+
+                <div class="q-5-header">
+                    <h2 id="q5">5. Which attribute is used to specify the source of an image in HTML?</h2>
+                    <ol style="list-style-type: lower-alpha;">
+                        <li>
+                            <input type="radio" name="q5-answer" id="q5-a" class="q5-answer">
+                            <label for="q5-a" id="q5-a-label">src</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5-answer" id="q5-b" class="q5-answer">
+                            <label for="q5-b" id="q5-b-label">link</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5-answer" id="q5-c" class="q5-answer">
+                            <label for="q5-c" id="q5-c-label">href</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q5-answer" id="q5-d" class="q5-answer">
+                            <label for="q5-d" id="q5-d-label">img</label>
+                        </li>
+                    </ol>
+                </div>
+                <div class="q-5-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                </div>
+            </div>
+
+            <div class="q-6">
+
+                <div class="q-6-header">
+                    <h2 id="q6">6. Which HTML tag is used to define a table row?</h2>
+                    <ol style="list-style-type: lower-alpha;">
+                        <li>
+                            <input type="radio" name="q6-answer" id="q6-a" class="q6-answer">
+                            <label for="q6-a" id="q6-a-label"><pre><code>&lt;td&gt;</code></pre></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6-answer" id="q6-b" class="q6-answer">
+                            <label for="q6-b" id="q6-b-label"><pre><code>&lt;tr&gt;</code></pre></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6-answer" id="q6-c" class="q6-answer">
+                            <label for="q6-c" id="q6-c-label"><pre><code>&lt;th&gt;</code></pre></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="q6-answer" id="q6-d" class="q6-answer">
+                            <label for="q6-d" id="q6-d-label"><pre><code>&lt;table&gt;</code></pre></label>
+                        </li>
+                    </ol>
+                </div>
+                <div class="q-6-footer">
+                    <button id="submit-button">Submit</button>
+                    <input type="button" value="Reset" id="reset-button">
+                    <button id="get-score">Get Score</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="assets/script/main.js"></script>    
+</body>
+</html>
